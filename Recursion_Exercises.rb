@@ -59,3 +59,15 @@ end
 # p rec2(3, 3)
 # p rec2(3, 4)
 # p rec2(3, 5)
+
+class Array
+    new_arr = []
+    self.each do |ele|
+       if ele.is_a? Array
+         #deep.dup
+       else
+        new_arr << ele
+    end
+    new_arr
+end
+ 
