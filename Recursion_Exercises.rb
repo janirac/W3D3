@@ -93,4 +93,18 @@ end
 #   ["nuts", "bolts", "washers"],
 #   ["capacitors", "resistors", "inductors"]
 # ]
- 
+
+def rec_fibonacci(n)
+    return [] if n < 1
+    return [0] if n == 1
+    return [0,1] if n == 2
+    
+end
+
+#rec_fibonacci(0) == []
+#rec_fibonacci(1) == [0]
+#rec_fibonacci(2) == [0,1]
+#rec_fibonacci(3) == [0,1,2] rec_fibonacci(n-1) << rec_fibonacci(2) + rec_fibonacci(1) 
+#rec_fibonacci(4) == [0,1,2,3]
+
+
