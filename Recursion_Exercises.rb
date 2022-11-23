@@ -45,29 +45,52 @@ end
 #Base Case: if exponent == 0 return 1
 #Base Case: if exponent == 1 return base
 #Repeating method: 
+#Use Memoization
 def rec2(base, exponent)
     return 1 if exponent == 0
     return base if exponent == 1
 
+    half1 = rec2(base, exponent / 2)
+    half2 = (rec2(base, (exponent - 1) / 2))
+
     if exponent.even? 
-        rec2(base, exponent / 2) * rec2(base, exponent / 2)
+        half1 * half1 
     else
-        base * ((rec2(base, (exponent - 1) / 2) * (rec2(base, (exponent - 1) / 2)))) 
+        base * half2 * half2
     end 
 end 
 
 # p rec2(3, 3)
 # p rec2(3, 4)
 # p rec2(3, 5)
+# p rec2(3, 256)
 
 class Array
-    new_arr = []
-    self.each do |ele|
-       if ele.is_a? Array
-         #deep.dup
-       else
-        new_arr << ele
+
+    def deep_dup
+        new_arr = []
+        self.each do |ele|
+            if ele.is_a? Array
+                new_arr << ele.deep_dup
+            else
+                new_arr << ele
+            end
+        end
+
+        new_arr
     end
-    new_arr
-end
+end 
+
+# p robot_parts = [
+#   [["nuts", "bolts"], ["washers"]],
+#   ["capacitors", "resistors", "inductors"]
+# ].deep_dup
+
+
+# robot_parts.dup
+
+# robot_parts_copy = [
+#   ["nuts", "bolts", "washers"],
+#   ["capacitors", "resistors", "inductors"]
+# ]
  
